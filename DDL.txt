@@ -1,0 +1,87 @@
+DDL 
+1. CREATE
+2. ALTER
+3. DROP
+4. DELETE
+5. UPDATE
+
+
+create database sql_practice;
+
+use sql_practice;
+
+
+---Creating Table
+Create table if not exists employee
+(
+    id int NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    salary DOUBLE,
+    hiring_date DATE DEFAULT '2021-01-01',
+    CONSTRAINT unique_id UNIQUE (id),
+    CONSTRAINT salary_check CHECK (salary > 1000)
+);
+--- create tables for Foreign Key demo
+create table customer
+(
+    cust_id int,
+    name VARCHAR(50), 
+    age int,
+    constraint pk Primary Key (cust_id) 
+);
+
+create table orders
+(
+    order_id int,
+    order_num int not null,
+    customer_id int not null,
+    constraint pk Primary Key (order_id),
+    constraint fk Foreign Key (customer_id) REFERENCES customer(cust_id)
+);
+
+
+
+---Alter Table
+
+--- Add new column
+Alter table employee add DOB date;
+
+--- modify existing column in a TABLE or change datatype of name column or increase lenght of name column (name is a column)
+Alter table employee modify column name varchar(100);
+
+--- delete existing column from given TABLE or remove city column from employee table
+Alter table employee drop column city;
+
+--- Rename the column (name to full_name)
+Alter table employee rename column name to full_name;
+
+--- drop constraint from existing TABLE
+Alter table employee drop constraint id_unique;
+
+--- drop constraint from existing TABLE
+Alter table employee drop constraint id_unique;
+
+-- Add constraint on an existing column (age)
+Alter table customer add constraint age_unq UNIQUE(age); 
+
+
+ --DROP
+
+--To delete data just and the schema should get remained
+Truncate table persons;
+
+--To delete data as well as schema
+Drop table persons;
+
+
+-- DELETE
+--- how to delete specific records from table using delete command
+delete from employee where hiring_date = '2021-08-10';
+
+
+--UPDATE
+--- Update the salary of employees who joined the company on 2021-08-10 to 80000
+update employee SET salary = 80000 where hiring_date = '2021-08-10';
+
+--- How to perform multi updates
+update employee set age=20,salary=25000 where hiring_date = '2021-08-10';
