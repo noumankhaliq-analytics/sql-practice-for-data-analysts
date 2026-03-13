@@ -2,6 +2,8 @@
 
 This repository contains structured SQL practice files covering fundamental SQL concepts used in **Data Analysis and Database Management**.
 
+These SQL queries were part of my **SQL learning journey between 2022 and 2023**, where I practiced core database concepts and query writing using MySQL.
+
 The SQL queries are organized into separate text files based on topic to make learning easier and more structured.
 
 
